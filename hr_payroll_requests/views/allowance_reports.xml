@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        <record model='ir.ui.view' id='bonus_report_form'>
+        	<field name='name'>bonus_report.form</field>
+        	<field name='model'>bonus.report</field>
+        	<field name='arch' type='xml'>
+        		<form string='Bonus Report'>
+        				<group col="4">
+        					<field name='all_department'/>
+        					<field name='department_id' attrs="{'invisible': [('all_department','!=',False)]}"/>
+        					
+        				</group>
+        			<footer>
+                        <button name="print_report" string="Print" type="object" class="oe_highlight oe_right" />
+                    </footer>
+
+        		</form>
+        	</field>
+        </record>
+
+        <record id='action_bonus_report' model='ir.actions.act_window'>
+        	<field name='name'>Bonus Report</field>
+        	<field name='res_model'>bonus.report</field>
+        	<field name='view_type'>form</field>
+        	<field name='view_mode'>form</field>
+        	<field name='target'>new</field>
+
+        </record>
+
+        <record model='ir.ui.view' id='paid_leave_report_form'>
+            <field name='name'>paid_leave.form</field>
+            <field name='model'>paid.leave</field>
+            <field name='arch' type='xml'>
+                <form string='Paid Leave Report'>
+                        <group col="4">
+                            <field name='all_department'/>
+                            <field name='department_id' attrs="{'invisible': [('all_department','!=',False)]}"/>
+                            
+                        </group>
+                    <footer>
+                        <button name="print_report" string="Print" type="object" class="oe_highlight oe_right" />
+                    </footer>
+
+                </form>
+            </field>
+        </record>
+
+        <record id='action_paid_leave_report' model='ir.actions.act_window'>
+            <field name='name'>Paid Leave Report</field>
+            <field name='res_model'>paid.leave</field>
+            <field name='view_type'>form</field>
+            <field name='view_mode'>form</field>
+            <field name='target'>new</field>
+
+        </record>
+
+        <record model='ir.ui.view' id='leave_expense_report_form'>
+            <field name='name'>leave_expense.form</field>
+            <field name='model'>leave.expense</field>
+            <field name='arch' type='xml'>
+                <form string='Leave Expense Report'>
+                        <group col="4">
+                            <field name='all_department'/>
+                            <field name='department_id' attrs="{'invisible': [('all_department','!=',False)]}"/>
+                            
+                        </group>
+                    <footer>
+                        <button name="print_report" string="Print" type="object" class="oe_highlight oe_right" />
+                    </footer>
+
+                </form>
+            </field>
+        </record>
+
+        <record id='action_leave_expense_report' model='ir.actions.act_window'>
+            <field name='name'>Leave Expense Report</field>
+            <field name='res_model'>leave.expense</field>
+            <field name='view_type'>form</field>
+            <field name='view_mode'>form</field>
+            <field name='target'>new</field>
+
+        </record>
+
+        <menuitem id="payroll_report_menu" name="Report" 
+            parent="hr_payroll.menu_hr_payroll_root"/>
+
+        <menuitem id="bonus_report_menu" name="Bonus Report" 
+            parent="hr_payroll_requests.payroll_report_menu" action="action_bonus_report"/>
+
+            <menuitem id="paid_leave_report_menu" name="Paid Leave Report" 
+            parent="hr_payroll_requests.payroll_report_menu" action="action_paid_leave_report"/>
+
+            <menuitem id="leave_expense_report_menu" name="Leave Expense Report" 
+            parent="hr_payroll_requests.payroll_report_menu" action="action_leave_expense_report"/>
+
+    </data>
+</openerp>

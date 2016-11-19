@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+<data noupdate="1">
+
+    <!-- salary rules -->
+    <!--<record id="adv_ded_salary_rule" model="hr.salary.rule">-->
+        <!--<field name="name">Advance Deduction</field>-->
+        <!--<field name="category_id" ref="hr_payroll.DED"/>-->
+        <!--<field name="code">ADVDED</field>-->
+        <!--<field name="active" eval="True" />-->
+        <!--<field name="sequence" eval="195" />-->
+        <!--<field name="appears_on_payslip" eval="True" />-->
+        <!--<field name="condition_select">python</field>-->
+        <!--<field name="condition_python">result = payslip.payslip_advance_paid</field>-->
+        <!--<field name="amount_select">code</field>-->
+        <!--<field name="amount_python_compute">result = -1 * payslip.payslip_advance_paid.amount_payslip_total</field>-->
+        <!--<field name="quantity">1</field>-->
+    <!--</record>   -->
+
+    <record id="bonus_salary_rule" model="hr.salary.rule">
+        <field name="name">Bonus Pay</field>
+        <field name="category_id" ref="hr_payroll.ALW"/>
+        <field name="code">BONUS</field>
+        <field name="active" eval="True" />
+        <field name="sequence" eval="15" />
+        <field name="appears_on_payslip" eval="True" />
+        <field name="condition_select">python</field>
+        <field name="condition_python">result = payslip.amount_bonus > 0</field>
+        <field name="amount_select">code</field>
+        <field name="amount_python_compute">result = payslip.amount_bonus</field>
+        <field name="quantity">1</field>
+    </record>
+
+    <record id="pd_leave_salary_rule" model="hr.salary.rule">
+        <field name="name">Paid Leave</field>
+        <field name="category_id" ref="hr_payroll.ALW"/>
+        <field name="code">PDLEAVE</field>
+        <field name="active" eval="True" />
+        <field name="sequence" eval="17" />
+        <field name="appears_on_payslip" eval="True" />
+        <field name="condition_select">python</field>
+        <field name="condition_python">result = payslip.amount_pd_leave > 0</field>
+        <field name="amount_select">code</field>
+        <field name="amount_python_compute">result = payslip.amount_pd_leave</field>
+        <field name="quantity">1</field>
+    </record>
+
+    <record id="expense_leave_salary_rule" model="hr.salary.rule">
+        <field name="name">Leave Expense</field>
+        <field name="category_id" ref="hr_payroll.ALW"/>
+        <field name="code">EXPLEAVE</field>
+        <field name="active" eval="True" />
+        <field name="sequence" eval="18" />
+        <field name="appears_on_payslip" eval="True" />
+        <field name="condition_select">python</field>
+        <field name="condition_python">result = payslip.amount_exp_leave > 0</field>
+        <field name="amount_select">code</field>
+        <field name="amount_python_compute">result = payslip.amount_exp_leave</field>
+        <field name="quantity">1</field>
+    </record>
+
+    <record id="penalty_salary_rule" model="hr.salary.rule">
+        <field name="name">Penalty</field>
+        <field name="category_id" ref="hr_payroll.DED"/>
+        <field name="code">PENALTY</field>
+        <field name="active" eval="True" />
+        <field name="sequence" eval="19" />
+        <field name="appears_on_payslip" eval="True" />
+        <field name="condition_select">python</field>
+        <field name="condition_python">result = payslip.amount_penalty > 0</field>
+        <field name="amount_select">code</field>
+        <field name="amount_python_compute">result = -1 * payslip.amount_penalty</field>
+        <field name="quantity">1</field>
+    </record>
+
+        <!-- adds the above rules to basic salary structure -->
+    <record id="hr_payroll.structure_base" model="hr.payroll.structure">
+        <field eval="[(6, 0, [ref('hr_payroll.hr_rule_basic'), ref('hr_payroll.hr_rule_taxable'), ref('bonus_salary_rule'), ref('pd_leave_salary_rule'), ref('expense_leave_salary_rule'), ref('penalty_salary_rule'), ref('hr_payroll.hr_rule_net')])]" name="rule_ids"/>
+    </record>
+
+
+</data>
+</openerp>

@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+<data>  
+
+<!-- hr bonus items, below 2 -->
+<record id="view_hr_bonus_request_form" model="ir.ui.view">
+    <field name="name">hr.bonus.request.form</field>
+    <field name="model">hr.bonus.request</field>
+    <field name="arch" type="xml">
+        <form string="Bonus Request">
+            <header>
+                <button string="Approve" name="make_bonus_approved" states="draft,approved" class="oe_highlight" type="object" />
+                <button string="Reject" name="make_bonus_rejected" states="draft" type="object"/>
+                <field name="state" widget="statusbar" statusbar_visible="draft,approve" statusbar_colors='{"reject":"red","approve":"blue"}'/>
+            </header>
+            <sheet>
+            <group name="container_row_2">
+                <group col="2">
+                    <field name="name" class="oe_read_only"/>
+                    <label for="date_from" string="Period"/>
+                    <div>
+                        <field name="date_from" class="oe_inline" attrs="{'readonly': [('state','=','approve')]}"/> - <field name="date_to" class="oe_inline" attrs="{'readonly': [('state','=','approve')]}"/>
+                    </div>
+                    <field name="amount_month" attrs="{'readonly': [('state','=','approve')]}" />
+                    <field name="months" attrs="{'readonly': [('state','=','approve')]}" />
+                    <field name="amount" attrs="{'readonly': [('state','=','approve')]}" />
+                </group>
+                <group>
+                    <!-- <field name="create_uid" /> -->
+                    <field name="note" attrs="{'readonly': [('state','=','approve')]}"/>
+                    <field name="multi_employee" attrs="{'readonly': [('state','=','approve')]}"/>
+                    <field name="employee_id" string="Employee" attrs="{'invisible': [('multi_employee','=',True)], 'readonly': [('state','=','approve')]}" />
+                    <field name="employee_ids" attrs="{'invisible': [('multi_employee','=',False)], 'readonly': [('state','=','approve')]}" widget="many2many_tags" />
+                </group>
+            </group>
+            </sheet>
+        </form>
+    </field>
+</record>
+
+<record id="view_hr_bonus_request_tree" model="ir.ui.view">
+    <field name="name">hr.bonus.request.tree</field>
+    <field name="model">hr.bonus.request</field>
+    <field name="arch" type="xml">
+        <tree string="Bonus Requests">
+            <field name="name"/>
+            <field name="create_date"/>
+            <field name="amount"/>
+            <field name="state"/>
+        </tree>
+    </field>
+</record>
+
+    <!-- hr paid leave items, below 2 -->
+<record id="view_hr_paid_leave_form" model="ir.ui.view">
+    <field name="name">hr.leave.paid.form</field>
+    <field name="model">hr.leave.paid</field>
+    <field name="arch" type="xml">
+        <form string="Paid Leave">
+            <header>
+                <button string="Approve" name="make_pd_leave_approved" states="draft,approved" class="oe_highlight" type="object" />
+                <button string="Reject" name="make_pd_leave_rejected" states="draft" type="object"/>
+                <field name="state" widget="statusbar" statusbar_visible="draft,approve" statusbar_colors='{"reject":"red","approve":"blue"}'/>
+            </header>
+            <sheet>
+            <group name="container_row_2">
+                <group col="2">
+                    <field name="name" class="oe_read_only"/>
+                    <label for="date_from" string="Period"/>
+                    <div>
+                        <field name="date_from" class="oe_inline" attrs="{'readonly': [('state','=','approve')]}"/> - <field name="date_to" class="oe_inline" attrs="{'readonly': [('state','=','approve')]}"/>
+                    </div>
+                    <field name="amount_day" attrs="{'readonly': [('state','=','approve')]}" />
+                    <field name="days" attrs="{'readonly': [('state','=','approve')]}" />
+                    <field name="amount" attrs="{'readonly': [('state','=','approve')]}"/>
+                </group>
+                <group>
+                    <!-- <field name="create_uid" /> -->
+                    <field name="employee_id" string="Employee" attrs="{'readonly': [('state','=','approve')]}"/>
+                    <field name="note" />
+                </group>
+            </group>
+            </sheet>
+        </form>
+    </field>
+</record>
+
+<record id="view_hr_paid_leave_tree" model="ir.ui.view">
+    <field name="name">hr.leave.paid.tree</field>
+    <field name="model">hr.leave.paid</field>
+    <field name="arch" type="xml">
+        <tree string="Paid Leaves">
+            <field name="name"/>
+            <field name="create_date"/>
+            <field name="amount"/>
+            <field name="state"/>
+        </tree>
+    </field>
+</record>
+
+    <!-- hr expense leave items, below 2 -->
+<record id="view_hr_exp_leave_form" model="ir.ui.view">
+    <field name="name">hr.leave.expense.form</field>
+    <field name="model">hr.leave.expense</field>
+    <field name="arch" type="xml">
+        <form string="Leav Expense">
+            <header>
+                <button string="Approve" name="make_exp_leave_approved" states="draft,approved" class="oe_highlight" type="object" />
+                <button string="Reject" name="make_exp_leave_rejected" states="draft" type="object"/>
+                <field name="state" widget="statusbar" statusbar_visible="draft,approve" statusbar_colors='{"reject":"red","approve":"blue"}'/>
+            </header>
+            <sheet>
+            <group name="container_row_2">
+                <group col="2">
+                    <field name="name" class="oe_read_only"/>
+                    <label for="date_from" string="Period"/>
+                    <div>
+                        <field name="date_from" class="oe_inline" attrs="{'readonly': [('state','=','approve')]}"/> - <field name="date_to" class="oe_inline" attrs="{'readonly': [('state','=','approve')]}"/>
+                    </div>
+                    <field name="amount" attrs="{'readonly': [('state','=','approve')]}"/>
+                </group>
+                <group>
+                    <!-- <field name="create_uid" /> -->
+                    <field name="employee_id" string="Employee" attrs="{'readonly': [('state','=','approve')]}" />
+                    <field name="note" />
+                </group>
+            </group>
+            </sheet>
+        </form>
+    </field>
+</record>
+
+<record id="view_hr_exp_leave_tree" model="ir.ui.view">
+    <field name="name">hr.leave.expense.tree</field>
+    <field name="model">hr.leave.expense</field>
+    <field name="arch" type="xml">
+        <tree string="Leave Expense">
+            <field name="name"/>
+            <field name="create_date"/>
+            <field name="amount"/>
+            <field name="state"/>
+        </tree>
+    </field>
+</record>
+
+    <!-- hr penalty items, below 2 -->
+<record id="view_hr_penalty_form" model="ir.ui.view">
+    <field name="name">hr.pay.penalty.form</field>
+    <field name="model">hr.pay.penalty</field>
+    <field name="arch" type="xml">
+        <form string="Leav Expense">
+            <header>
+                <button string="Approve" name="make_penalty_approved" states="draft,approved" class="oe_highlight" type="object" />
+                <button string="Reject" name="make_penalty_rejected" states="draft" type="object"/>
+                <field name="state" widget="statusbar" statusbar_visible="draft,approve" statusbar_colors='{"reject":"red","approve":"blue"}'/>
+            </header>
+            <sheet>
+            <group name="container_row_2">
+                <group col="2">
+                    <field name="name" class="oe_read_only"/>
+                    <label for="date_from" string="Period"/>
+                    <div>
+                        <field name="date_from" class="oe_inline" attrs="{'readonly': [('state','=','approve')]}"/> - <field name="date_to" class="oe_inline" attrs="{'readonly': [('state','=','approve')]}"/>
+                    </div>
+                    <field name="amount" attrs="{'readonly': [('state','=','approve')]}" />
+                </group>
+                <group>
+                    <!-- <field name="create_uid" /> -->
+                    <field name="employee_id" string="Employee" attrs="{'readonly': [('state','=','approve')]}" />
+                    <field name="note" />
+                </group>
+            </group>
+            </sheet>
+        </form>
+    </field>
+</record>
+
+<record id="view_hr_pay_penalty_tree" model="ir.ui.view">
+    <field name="name">hr.pay.penalty.tree</field>
+    <field name="model">hr.pay.penalty</field>
+    <field name="arch" type="xml">
+        <tree string="Leave Expense">
+            <field name="name"/>
+            <field name="create_date"/>
+            <field name="amount"/>
+            <field name="state"/>
+        </tree>
+    </field>
+</record>
+
+<record id="action_view_hr_bonus" model="ir.actions.act_window">
+    <field name="name">Bonus Requests</field>
+    <field name="res_model">hr.bonus.request</field>
+    <field name="view_mode">tree,form</field>
+    <field name="view_type">form</field>
+</record>
+
+<record id="action_hr_paid_leave" model="ir.actions.act_window">
+    <field name="name">Paid Leave Requests</field>
+    <field name="res_model">hr.leave.paid</field>
+    <field name="view_mode">tree,form</field>
+    <field name="view_type">form</field>
+</record>
+
+<record id="action_hr_exp_leave" model="ir.actions.act_window">
+    <field name="name">Leave Expense Requests</field>
+    <field name="res_model">hr.leave.expense</field>
+    <field name="view_mode">tree,form</field>
+    <field name="view_type">form</field>
+</record>
+
+<record id="action_hr_pay_penalty" model="ir.actions.act_window">
+    <field name="name">Salary Penalty</field>
+    <field name="res_model">hr.pay.penalty</field>
+    <field name="view_mode">tree,form</field>
+    <field name="view_type">form</field>
+</record>
+
+<menuitem id="menu_hr_allowances_expenses" parent="hr.menu_hr_root" name="Allowances &amp; Expenses Requests" groups="base.group_hr_user" /> 
+
+
+<menuitem action="action_hr_paid_leave" id="menu_hr_pd_leave" parent="menu_hr_allowances_expenses" groups="base.group_hr_user" sequence="30" /> 
+<menuitem action="action_hr_exp_leave" id="menu_hr_exp_leave" parent="menu_hr_allowances_expenses" groups="base.group_hr_user" sequence="35" /> 
+<menuitem action="action_hr_pay_penalty" id="menu_hr_pay_penalty" parent="menu_hr_allowances_expenses" groups="base.group_hr_user" sequence="40" /> 
+
+
+<menuitem  id="menu_hr_bonus_main" name="Bonus Requests" parent="hr_payroll.menu_hr_payroll_root" groups="base.group_hr_user" sequence="50" /> 
+
+<menuitem action="action_view_hr_bonus" id="menu_hr_bonus_requests_sub" parent="menu_hr_bonus_main" groups="base.group_hr_user" sequence="55" /> 
+
+
+
+</data>
+</openerp>

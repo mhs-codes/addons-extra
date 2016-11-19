@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+service_user_id, booking.info user,vehicle_service.model_booking_info,vehicle_service.group_name_service_user, 1,1,0,0
+service_manager_id, booking.info manager,vehicle_service.model_booking_info,vehicle_service.group_name_service_manager, 1,1,1,1
