@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+
+         <record id="paperformat_euro_customs" model="report.paperformat">
+            <field name="name">European A4 Advance</field>
+            <field name="default" eval="True" />
+            <field name="format">A4</field>
+            <field name="page_height">0</field>
+            <field name="page_width">0</field>
+            <field name="orientation">Portrait</field>
+            <field name="margin_top">45</field>
+            <field name="margin_bottom">23</field>
+            <field name="margin_left">7</field>
+            <field name="margin_right">7</field>
+            <field name="header_line" eval="False" />
+            <field name="header_spacing">42</field>
+            <field name="dpi">90</field>
+        </record>
+
+
+        <report id="bonus_report_action" model="bonus.report" string="Bonus Report" report_type="qweb-pdf" name="hr_payroll_requests.report_bonus_template" file="hr_payroll_requests.report_bonus_template" menu="False" />
+
+
+        <report 
+            id="paid_leave_action"
+            model="paid.leave" 
+            string="Paid Leave Report"
+            report_type="qweb-pdf"
+            name="hr_payroll_requests.paid_leave_template" 
+            file="hr_payroll_requests.paid_leave_template"
+            menu="False"
+        />
+
+        <report 
+            id="leave_expense_action"
+            model="leave.expense" 
+            string="Leave Expenses Report"
+            report_type="qweb-pdf"
+            name="hr_payroll_requests.leave_expense_template" 
+            file="hr_payroll_requests.leave_expense_template"
+            menu="False"
+        />
+
+        <record id="hr_payroll_requests.bonus_report_action" model="ir.actions.report.xml">
+            <field name="paperformat_id" ref="hr_payroll_requests.paperformat_euro_customs"/>
+            
+        </record>
+
+        <record id="hr_payroll_requests.paid_leave_action" model="ir.actions.report.xml">
+            <field name="paperformat_id" ref="hr_payroll_requests.paperformat_euro_customs"/>
+            
+        </record>
+
+        <record id="hr_payroll_requests.leave_expense_action" model="ir.actions.report.xml">
+            <field name="paperformat_id" ref="hr_payroll_requests.paperformat_euro_customs"/>
+            
+        </record>
+    </data>
+</openerp>
