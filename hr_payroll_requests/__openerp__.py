@@ -1,6 +1,6 @@
 {
    'name' : 'Allowances and Deduction Payments',
-   'version' : '9.0.1.0',
+   'version' : '9.0.2.0',
    'author' : 'IDS ',
    'depends' : ['base','hr','hr_payroll'],
    'category' : 'General',
