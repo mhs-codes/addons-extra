@@ -2,7 +2,7 @@
    'name' : 'Allowances and Deduction Payments',
    'version' : '9.0.2.0',
    'author' : 'IDS ',
-   'depends' : ['base','hr','hr_payroll'],
+   'depends' : ['base','hr','hr_payroll', 'web'],
    'category' : 'General',
    'description' : """Salary Advance Payment """,
    'data' : [
