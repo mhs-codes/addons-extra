@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data>
+		<template id="mhs_test_assets" inherit_id="website.assets_backend">
+			<xpath expr="." position="inside">
+				<script type="text/javascript" src="/mhs_test/static/src/js/mhs_test.js"/>
+				<!-- <link rel='stylesheet' href="/mhs_test/static/src/css/mhs_test.css"/> -->
+			</xpath>
+		</template>
+	</data>
+</openerp>

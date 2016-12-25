@@ -1,0 +1,33 @@
+<templates id="template" xml:space="preserve">
+
+	<tr t-name="TreeViewCustomMhs.row">
+		<t t-set="columns" t-value="record" />
+		<t t-foreach="columns" t-as="column">
+			<td>
+				<t t-esc="column" />
+			</td>
+		</t>
+	</tr>
+
+	<table t-name="TreeViewCustomMhs" >
+		<t t-set="records" t-value="widget.get('records')"/>
+		<!-- <t t-log="records" /> -->
+		<!-- <t t-debug="" /> -->
+		<thead>
+			<tr>
+				<th>
+				</th>
+			</tr>
+			<tbody>
+				<t t-foreach="records" t-as="record">
+					<t t-call="TreeViewCustomMhs.row" />
+				</t>
+			</tbody>
+		</thead>
+		<tfoot>
+			<tr>
+			</tr>
+		</tfoot>
+	</table>
+
+</templates>

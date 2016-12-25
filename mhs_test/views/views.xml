@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+  <data>
+
+      <record id="mhs_test_wiz_form_view" model="ir.ui.view">
+        <field name="name">mhs.test.wiz.form.view</field>
+        <field name="model">mhs.test.wiz</field>
+        <field name="arch" type="xml">
+          <form string="Test">
+            <sheet>
+              <group>
+                <field name="name" />
+                <field name="partner" />
+                <field name="mode" />
+              </group>
+              <field name="employees" widget="m2m_tree_check_mhs" />
+            </sheet>
+            <footer>
+              <button type="object" name="apply" string="WIZ" />
+            </footer>
+          </form>
+        </field>
+      </record>
+
+      <record id="mhs_test_form_view" model="ir.ui.view">
+        <field name="name">mhs.test.form.view</field>
+        <field name="model">mhs.test</field>
+        <field name="arch" type="xml">
+          <form string="Test">
+            <sheet>
+              <group>
+                <field name="name" />
+                <field name="partner" />
+                <field name="mode" />
+              </group>
+              <field name="employees" widget="m2m_tree_check_mhs" >
+                <tree>
+                  <field name="name" />
+                  <field name="birthday" />
+                  <field name="city" />
+                </tree>
+              </field>
+
+              <button type="object" name="launch_wiz" string="WIZ" />
+            </sheet>
+          </form>
+        </field>
+      </record>
+
+      <record id="action_mhs_test" model="ir.actions.act_window">
+        <field name="name">MHS Test</field>
+        <field name="res_model">mhs.test</field>
+      </record>
+
+      <menuitem name="Test" id="menu_mhs_test_root" sequence="1"/>
+      <menuitem name="Test" id="menu_mhs_test" parent="menu_mhs_test_root" 
+        action="action_mhs_test"/>
+
+  </data>
+</openerp>
