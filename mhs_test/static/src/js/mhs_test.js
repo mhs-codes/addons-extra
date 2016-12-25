@@ -173,6 +173,14 @@ var M2MListViewMhs = X2ManyListView.extend(/** @lends instance.web.form.Many2Man
         }
     },
     load_list: function(data){
+    	var self = this;
+    	var read_mode = self.ViewManager.x2m.get('effective_readonly');
+    	if (read_mode){
+    		self.options.selectable = false;
+    	}
+    	else{
+    		self.options.selectable = true;
+    	};
     	this._super(data);
     	console.log(data);
     }
