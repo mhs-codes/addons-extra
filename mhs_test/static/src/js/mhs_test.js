@@ -120,6 +120,7 @@ var X2ManyList = ListView.List.extend({
     },
 });
 
+// ---------------MHS LIST BEGIN
 var M2MListViewMhs = X2ManyListView.extend(/** @lends instance.web.form.Many2ManyListView# */{
     init: function (parent, dataset, view_id, options) {
         this._super(parent, dataset, view_id, _.extend(options || {}, {
@@ -171,6 +172,10 @@ var M2MListViewMhs = X2ManyListView.extend(/** @lends instance.web.form.Many2Man
             });
         }
     },
+    load_list: function(data){
+    	this._super(data);
+    	console.log(data);
+    }
 });
 // ------------------------------------LIST END-------------
 
